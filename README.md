@@ -30,28 +30,28 @@ Using the provided command to run the keystore as an independent service.
 ## Use as Library
 
 	package main
+	
+	import (
+  		"github.com/landonia/keystore"
+  		"github.com/landonia/keystore/transport"
+  	)
+  	
+  	func main() {
+  	
+  		// Create a key store in disk
+  		keystore := keystore.NewService("path/to/file/location")
 
-  import (
-  	"github.com/landonia/keystore"
-  	"github.com/landonia/keystore/transport"
-  )
+  		// Bind the network protocols that are required
+  		transport.StartHTTPServer(":8080", keystore.RequestChannel)
+  		transport.StartTCPServer(":8081", keystore.RequestChannel)
+  		transport.StartUDPServer(":8082", keystore.RequestChannel)
 
-  func main() {
+  		// Start
+  		keystore.Start()
 
-  	// Create a key store in disk
-  	keystore := keystore.NewService("path/to/file/location")
-
-  	// Bind the network protocols that are required
-  	transport.StartHTTPServer(":8080", keystore.RequestChannel)
-  	transport.StartTCPServer(":8081", keystore.RequestChannel)
-  	transport.StartUDPServer(":8082", keystore.RequestChannel)
-
-  	// Start
-  	keystore.Start()
-
-  	// .... wait until application ends and then shutdown and wait
-  	<-keystore.Stop()
-  }
+  		// .... wait until application ends and then shutdown and wait
+  		<-keystore.Stop()
+  	}
 
 ## Client Library Example
 
