@@ -25,7 +25,7 @@ For the service simply run `go get github.com/landonia/keystore/cmd/keystore`
 
 Using the provided command to run the keystore as an independent service.
 
-  keystore -dataPath ~/keystore/backup -httpAddr 8080 -tcpAddr 8081 -udpAddr 8082
+  `keystore -dataPath ~/keystore/backup -httpAddr 8080 -tcpAddr 8081 -udpAddr 8082`
 
 ## Use as Library
 
