@@ -28,7 +28,7 @@ Using the provided command to run the keystore as an independent service.
   `keystore -dataPath ~/keystore/backup -httpAddr 8080 -tcpAddr 8081 -udpAddr 8082`
 
 ## Use as Library
-
+```go
 	package main
 	
 	import (
@@ -52,7 +52,7 @@ Using the provided command to run the keystore as an independent service.
   		// .... wait until application ends and then shutdown and wait
   		<-keystore.Stop()
   	}
-
+```
 ## Client Library Example
 
 You will find a simple example of using the client transport libraries in cmd/clientexample/main.go
