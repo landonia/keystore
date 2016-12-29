@@ -1,5 +1,7 @@
 # keystore
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/landonia/keystore)](https://goreportcard.com/report/github.com/landonia/keystore)
+
 An in-memory key/value store written using the Go Language.
 
 ## Overview
