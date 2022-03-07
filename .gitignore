@@ -21,6 +21,9 @@ _testmain.go
 
 *.exe
 
+**/.idea/
+**.iml
+
 # Post files
 posts/*.json
 

@@ -27,19 +27,19 @@ func main() {
 	done := GetSignalChannel()
 
 	// Create a key store in disk
-	keystore := keystore.NewService(dataPath)
+	ks := keystore.NewService(dataPath)
 
 	// Bind the network protocols that are required
-	transport.StartHTTPServer(httpAddr, keystore.RequestChannel)
-	transport.StartTCPServer(tcpAddr, keystore.RequestChannel)
-	transport.StartUDPServer(udpAddr, keystore.RequestChannel)
+	transport.StartHTTPServer(httpAddr, ks.RequestChannel)
+	transport.StartTCPServer(tcpAddr, ks.RequestChannel)
+	transport.StartUDPServer(udpAddr, ks.RequestChannel)
 
 	// Start
-	keystore.Start()
+	ks.Start()
 
 	// Just wait to exit
 	<-done
-	<-keystore.Stop()
+	<-ks.Stop()
 }
 
 // GetSignalChannel will wait for an exit signal and send a complete flag
